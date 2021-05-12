@@ -1,1 +1,1 @@
-https://github.com/fortyler/work.git
+https://fortyler.github.io/work/
