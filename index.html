@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/public.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/css/mobileSelect.css">
+  <script src="./assets/js/mobileSelect.js" type="text/javascript"></script>
   <script src="./assets/js/jq.js"></script>
   <title>扫描拍照</title>
   <style>
@@ -140,6 +144,9 @@
         <textarea placeholder="请描述一下" class="layui-textarea layui-textarea1" style="margin-top:.3em;"></textarea>
         <!-- </div> -->
       </div>
+      <!-- <input type="text" id="leixing" readonly placeholder="请选择类型" /> -->
+      <div id="leixing">请选择类型</div>
+
 
       <button id="shangchuan" type="button" class="layui-btn layui-btn-lg"><i class="layui-icon"></i>上传照片</button>
 
@@ -162,7 +169,89 @@
 
   <script>
     var photoLength = 6;
+    var leixingData = [{
+        id: '1',
+        value: '村容村貌管理',
+        childs: [{
+            id: '1',
+            value: '乱搭乱建“蜘蛛网”'
+          },
+          {
+            id: '2',
+            value: '废旧房屋残垣断壁',
 
+          },
+          {
+            id: '3',
+            value: '基础设施',
+
+          },
+          {
+            id: '4',
+            value: '绿化情况',
+
+          },
+          {
+            id: '5',
+            value: '乱涂乱画“野广告”',
+
+          },
+          {
+            id: '6',
+            value: '农业废弃物',
+
+          },
+          {
+            id: '7',
+            value: '“四大堆”',
+
+          },
+          {
+            id: '8',
+            value: '家禽家畜',
+
+          }
+        ],
+
+      },
+      {
+        id: '2',
+        value: '厕所改造',
+        childs: [{
+          id: '1',
+          value: '户厕建设改造'
+        }]
+      },
+      {
+        id: '3',
+        value: '垃圾治理',
+        childs: [{
+            id: '1',
+            value: '村内及村庄周边',
+
+          },
+          {
+            id: '2',
+            value: '环卫设施',
+
+          }
+        ]
+      },
+      {
+        id: '4',
+        value: '污水治理',
+        childs: [{
+            id: '1',
+            value: '污水净化及排放'
+          },
+          {
+            id: '2',
+            value: '污水处理设施'
+          }
+        ]
+      },
+
+    ];
     window.onload = async function () {
       if (
         !"mediaDevices" in navigator ||
@@ -249,6 +338,7 @@
           alert("上传成功");
           $("#screenshotsContainer").find("img").remove();
           $(".layui-textarea1").val("");
+          $("#leixing").html("请选择类型")
         } else {
           alert("请拍几张照片吧")
         }
@@ -266,6 +356,19 @@
       }
       init();
     }
+    var leixing = new MobileSelect({
+      trigger: '#leixing',
+      title: '选择类型',
+      wheels: [{
+        data: leixingData
+      }],
+      transitionEnd: function (indexArr, data) {
+        console.log(data);
+      },
+      callback: function (indexArr, data) {
+        console.log(data);
+      }
+    });
   </script>
 </body>
 
