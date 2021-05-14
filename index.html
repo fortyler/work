@@ -74,14 +74,14 @@
 
     }
 
-    .cover_logo div {
+    .cover_logo>div {
       width: 100%;
       height: 100%;
       position: relative;
 
     }
 
-    .cover_logo div div {
+    .cover_logo>div .cover_sc {
       position: absolute;
       top: 0;
       left: 0;
@@ -95,12 +95,19 @@
 
     }
 
-    .tcc {
-      width: 40%;
+    .cover_logo .tcc {
+      width: 100%;
+      height: 100vh;
+      z-index: 40;
+      position: absolute;
+    }
+
+    .cover_logo #tcc {
+      width: 80%;
       height: 40vh;
     }
 
-    #tc {
+    .cover_logo #tc {
       width: 40%;
       height: 2em;
       margin: 0 auto;
@@ -108,7 +115,7 @@
       font-size: 1em;
     }
 
-    #tc span {
+    .cover_logo #tc span {
       width: 40%;
       height: 2rem;
       line-height: 22rem;
@@ -117,7 +124,7 @@
       border-radius: 8px;
     }
 
-    #tc span:nth-child(1) {
+    .cover_logo #tc span:nth-child(1) {
       /*margin-right:2rem;*/
     }
   </style>
@@ -157,12 +164,23 @@
   </div>
   <div class="cover_logo">
     <div>
-      <div></div>
+      <div class="cover_sc"></div>
       <div class="tcc">
         <div style="text-align:center;font-size:1.5rem;padding-top:2rem;">确定删除？</div>
+        <div id="pic">
+
+        </div>
         <div id="tc">
-          <span class="sure">确定</span>
-          <span class="cancel">取消</span>
+          <div class="layui-row">
+            <div class="layui-col-md3 layui-col-md-offset3">
+              <div class="grid-demo grid-demo-bg1 sure">确定</div>
+            </div>
+            <div class="layui-col-md3 layui-col-md-offset1">
+              <div class="grid-demo cancel">取消</div>
+            </div>
+          </div>
+          <!-- <span class="sure">确定</span>
+          <span class="cancel">取消</span> -->
         </div>
       </div>
     </div>
@@ -312,10 +330,16 @@
         }
         // return i;
       });
+
       $('#screenshotsContainer').on('click', 'img', function () {
         $(".cover_logo").show();
         var b = $(this)
         console.log(b.attr("src"))
+
+        var _pic = `
+          <img src="${b.attr('src')}" alt="">
+        `
+        $("#pic").html(_pic)
         $(".cover_logo").on('click', '.sure', function () {
           b.remove();
           $(".cover_logo").hide();
@@ -328,6 +352,7 @@
         })
 
       });
+      //上传
       $("#shangchuan").click(function () {
         if ($("#disc").val() == "" || $("#leixing").html() == "请选择类型") {
           alert("请添加描述并且选择类型")
