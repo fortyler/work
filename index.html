@@ -141,7 +141,8 @@
       <div class="layui-form-item layui-form-text">
         <!-- <label class="layui-form-label">描述：</label> -->
         <!-- <div class="layui-input-block"> -->
-        <textarea placeholder="请描述一下" class="layui-textarea layui-textarea1" style="margin-top:.3em;"></textarea>
+        <textarea id="disc" placeholder="请描述一下" class="layui-textarea layui-textarea1"
+          style="margin-top:.3em;"></textarea>
         <!-- </div> -->
       </div>
       <!-- <input type="text" id="leixing" readonly placeholder="请选择类型" /> -->
@@ -328,6 +329,10 @@
 
       });
       $("#shangchuan").click(function () {
+        if ($("#disc").val() == "" || $("#leixing").html() == "请选择类型") {
+          alert("请添加描述并且选择类型")
+          return;
+        }
 
         var img_a = $("#screenshotsContainer").find("img");
         for (let i = 0; i < img_a.length; i++) {
