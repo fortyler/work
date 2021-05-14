@@ -108,20 +108,28 @@
     }
 
     .cover_logo #tc {
-      width: 40%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
       height: 2em;
       margin: 0 auto;
-      margin-top: 40%;
       font-size: 1em;
     }
 
-    .cover_logo #tc span {
-      width: 40%;
+    .cover_logo #tc div {
+      width: 50%;
       height: 2rem;
-      line-height: 22rem;
+      line-height: 2rem;
       background-color: teal;
-      padding: .5rem;
-      border-radius: 8px;
+      text-align: center;
+      float: left;
+    }
+
+    .cover_logo #tc div.cancel {
+      background-color: #fff;
+      color: #333;
     }
 
     .cover_logo #tc span:nth-child(1) {
@@ -171,19 +179,17 @@
 
         </div>
         <div id="tc">
-          <div class="layui-row">
-            <div class="layui-col-md3 layui-col-md-offset3">
-              <div class="grid-demo grid-demo-bg1 sure">确定</div>
-            </div>
-            <div class="layui-col-md3 layui-col-md-offset1">
-              <div class="grid-demo cancel">取消</div>
-            </div>
-          </div>
-          <!-- <span class="sure">确定</span>
-          <span class="cancel">取消</span> -->
+
+          <div class="sure">确定</div>
+
+          <div class="cancel">取消</div>
+
         </div>
+        <!-- <span class="sure">确定</span>
+          <span class="cancel">取消</span> -->
       </div>
     </div>
+  </div>
   </div>
 
   <script>
